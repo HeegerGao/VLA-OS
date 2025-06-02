@@ -20,46 +20,69 @@ VLA-OS is a unified framework for planning representations and paradigms researc
 
 This repo is an official PyTorch implementation of VLA-OS, containing:
 
-- 🛠️Model [implementation]() of VLA-OS.
+- 🛠️VLA-OS model [implementation]().
 - 🤗[Planning Dataset]() of VLA-OS on [LIBERO](https://libero-project.github.io/intro.html), [The Colosseum](https://robot-colosseum.github.io/), [FurnitureBench](https://clvrai.github.io/furniture-bench/), [DexArt](https://www.chenbao.tech/dexart/), [PerAct2](https://bimanual.github.io/), and Real-World Deformable Object Manipulation tasks.
 - 🤗[checkpoint]() of VLA-OS on LIBERO-LONG.
 - 📈Training [scripts]() (with DeepSpeed Accelerator).
 - 🤖Data transformation [scripts]() for your own dataset.
 - 🕹️Planning Data Labeling [scripts]() for your custom dataset.
 
-The following guides include the [installation](#installation), [fine-tuning](#fine-tuning-on-your-own-dataset), and [deployment](#deployment-on-real-robots). Please refer to [pre-training]() for a detailed list of pre-training datasets and a pre-training guide.
+The following guides include the [installation](#installation), [VLM Pretraining](#vlm-pretraining), [VLA Training](#vla-training), and [Training on your own dataset](#training-on-your-own-dataset). 
 
 ## 📰 News
-- [2025/05/27] 🔥 Code released!
+- [2025/06/05] 🔥 Code released!
 
 ## Installation
 
-1. Clone this repo and install prerequisites:
+This installation is for NVIDIA A100 80G with cuda 12.6. We haven't test other cuda versions.
 
-    ```bash
-    # Clone this repo
-    git clone git@github.com:HeegerGao/VLA-OS.git
-    cd VLA-OS
-    
-    # Create a Conda environment
-    conda create -n vla python=3.10.0
-    conda activate vla
-    
-    # Install pytorch
-    # Look up https://pytorch.org/get-started/previous-versions/ with your cuda version for a correct command
-    pip install torch==2.1.0 torchvision==0.16.0  --index-url https://download.pytorch.org/whl/cu121
-    
-    # Install packaging
-    pip install packaging==24.0
-    
-    # Install flash-attn
-    pip install flash-attn --no-build-isolation
-    
-    # Install other prequisites
-    pip install -r requirements.txt
-    ```
+```bash
+# Clone this repo
+git clone git@github.com:HeegerGao/VLA-OS.git
 
-2. Download off-the-shelf multi-modal encoders:
+# Create a Conda environment
+conda create -n vla python=3.10
+conda activate vla
+
+# Install PyTorch
+pip3 install torch torchvision torchaudio
+
+# Install LIBERO
+git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git
+cd LIBERO
+pip install -r requirements.txt
+pip install -e .
+
+# Install dlimp
+git clone https://github.com/kvablack/dlimp
+cd dlimp
+pip install -e .
+
+# Install Flash Attention
+pip install flash-attn --no-build-isolation
+
+# Install other prequisites
+pip install -r requirements.txt
+```
+
+## VLM Pretraining
+
+1. Download the llava-v1.5-instruct Dataset
+
+You can eiter download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets), or download it from our organized [HuggingFace version](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset/tree/main/llava-v1.5-instruct).
+
+```bash
+cd VLA-OS
+mkdir dataset
+mv YOUR_llava-v1.5-instruct_FOLDER dataset
+```
+
+2. Pretrain
+
+
+
+
+2. Download the Pretrained VAE for Image Foresight Planning:
 
    You can download the encoders from the following links:
 
