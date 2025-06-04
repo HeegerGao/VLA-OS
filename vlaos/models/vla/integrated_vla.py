@@ -12,7 +12,7 @@ from copy import deepcopy
 overwatch = initialize_overwatch(__name__)
 
 
-class IntergatedVLA(ActionOnlyVLA):
+class IntegratedVLA(ActionOnlyVLA):
     ''' Same architecture with the ActionOnlyVLA but use extra planning heads for language or visual planning
     '''
     def __init__(

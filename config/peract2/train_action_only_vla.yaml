@@ -1,0 +1,66 @@
+seed: 42
+hf_token: .hf_token
+run_root_dir: runs
+wandb_project: vla
+resume_step: null
+resume_epoch: null
+
+vla:
+  paradigm: action-only
+  load_from_checkpoint: false
+  checkpoint: null
+  
+  planning_heads: []
+  planning_mode: implicit
+
+  three_d: true
+  three_d_dim: 96
+  vla_id: qwen-siglip-224px-peract2
+  action_dim: 16
+  proprio_dim: 74
+  hidden_size: 512
+  num_heads: 8
+  dropout: 0.1
+  gated: false
+  fps_subsampling_factor: 5
+  action_loss_type: l1
+
+  vlm:
+    model_id: qwen25-dinosiglip-224px+0_5b
+    pretrained_checkpoint: runs/qwen25-dinosiglip-224px+0_5b+stage-finetune+x42/checkpoints/latest-checkpoint.pt
+    llm_backbone_id: qwen25-0_5b
+    vision_backbone_id: dinosiglip-vit-so-224px
+    image_resize_strategy: resize-naive
+    default_image_size: 224
+
+data:
+  root_dir: dataset/peract2
+  data_mix: peract2
+  shuffle_buffer_size: 12_000
+  image_aug: true
+  future_action_window_size: 7
+  goal_image_step: 32  # goal image step
+  image_window_size: 2
+  use_wrist_image: true
+  use_proprio: true
+  load_depth: true
+  given_camera_views: ["primary", "over_shoulder_left", "wrist_left", "over_shoulder_right", "overhead", "over_shoulder_right", "wrist_right"]
+
+training:
+  stage: full-finetune
+  epochs: 50
+  max_steps: 150_000
+  global_batch_size: 8
+  per_device_batch_size: 1
+  learning_rate: 5e-5
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  lr_scheduler_type: constant
+  warmup_ratio: 0.03
+  sharding_strategy: full-shard
+  save_step: 1000
+  training_algo: bc
+  # training_algo: flow_matching
+  skewed_timesteps: true
+  planning_loss_weight: 0.0
+  action_loss_weight: 1.0

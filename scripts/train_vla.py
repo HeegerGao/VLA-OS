@@ -11,7 +11,7 @@ from vlaos.overwatch import initialize_overwatch
 from utils.model_utils import load_qwen_vlm
 from utils.utils import set_global_seed
 
-from vlaos.models import ActionOnlyVLA, IntergatedVLA, HierarchicalVLA
+from vlaos.models import ActionOnlyVLA, IntegratedVLA, HierarchicalVLA
 from vlaos.datasets import get_continuous_vla_dataset_and_collator
 from vlaos.training import AcceleratorStrategy
 from vlaos.training.metrics import VLAMetrics
@@ -66,7 +66,7 @@ def train(cfg) -> None:
     if cfg.vla.paradigm == "action-only":
         vla = ActionOnlyVLA(cfg.vla, vlm, training_algo=cfg.training.training_algo, skewed_timesteps=cfg.training.skewed_timesteps)
     elif cfg.vla.paradigm == "integrated":
-        vla = IntergatedVLA(cfg.vla, vlm, training_algo=cfg.training.training_algo, skewed_timesteps=cfg.training.skewed_timesteps)
+        vla = IntegratedVLA(cfg.vla, vlm, training_algo=cfg.training.training_algo, skewed_timesteps=cfg.training.skewed_timesteps)
         if "visual_planning" in cfg.vla.planning_heads:
             visual_tokenizer = vla.visual_planning_tokenizer
     elif cfg.vla.paradigm == "hierarchical":
