@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 1. Download the llava-v1.5-instruct Dataset
 
-You can eiter download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets), or download it from our organized [HuggingFace version](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset/tree/main/llava-v1.5-instruct).
+You can eiter download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets), or download it from our organized [HuggingFace version](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset/tree/main/llava-v1.5-instruct). Then move the unzipped dataset folder:
 
 ```bash
 cd VLA-OS
