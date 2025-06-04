@@ -20,12 +20,12 @@ VLA-OS is a unified framework for planning representations and paradigms researc
 
 This repo is an official PyTorch implementation of VLA-OS, containing:
 
-- 🛠️VLA-OS model [implementation]().
+- 🛠️VLA-OS model [implementation](https://github.com/HeegerGao/VLA-OS/tree/main/vlaos/models).
 - 🤗[Dataset](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset) of VLA-OS on [LIBERO](https://libero-project.github.io/intro.html), [The Colosseum](https://robot-colosseum.github.io/), [FurnitureBench](https://clvrai.github.io/furniture-bench/), [DexArt](https://www.chenbao.tech/dexart/), [PerAct2](https://bimanual.github.io/), and Real-World Deformable Object Manipulation tasks.
-- 🤗[checkpoint]() of VLA-OS on LIBERO-LONG.
-- 📈Training [scripts]() (with DeepSpeed Accelerator for VLA and FSDP for VLM).
-- 🤖Data transformation [scripts]() for your own dataset.
-- 🕹️Planning Data Labeling [scripts]() for your custom dataset.
+- 🤗[checkpoint](https://huggingface.co/Linslab/VLA-OS) of VLA-OS.
+- 📈Training [scripts](https://github.com/HeegerGao/VLA-OS/tree/main/scripts) (with DeepSpeed Accelerator for VLA and FSDP for VLM).
+- 🤖Data transformation [scripts](https://github.com/Panda-Shawn/VLA-OS-Language-Planning-Labeling) for your own dataset.
+- 🕹️Planning Data Labeling [scripts](https://github.com/Panda-Shawn/VLA-OS-Language-Planning-Labeling) for your custom dataset.
 
 The following guides include the [installation](#installation), [VLM Pretraining](#vlm-pretraining), [VLA Training](#vla-training), and [Training on your own dataset](#training-on-your-own-dataset). 
 
@@ -89,9 +89,9 @@ If you do not want to train the VLM by yourself, you can directly download the p
 
 1. Put your pretrained VLM checkpoint under `runs/qwen25-dinosiglip-224px+0_5b+stage-finetune+x42/checkpoints/latest-checkpoint.pt`.
 
-2. Download pretrained VAE (infinity_vae_d32reg.pth) for Image Foresight Planning from [here]().
+2. Download pretrained VAE (infinity_vae_d32reg.pth) for Image Foresight Planning from [here](https://huggingface.co/Linslab/VLA-OS/blob/main/auxiliary/infinity_vae_d32reg.pth).
 
-3. Download the training datasets from [our huggingface dataset repo]().
+3. Download the training datasets from [our huggingface dataset repo](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset).
 
 4. Run the training script with the corresponding config. For example, train Integrated VLA on LIBERO-10:
 
