@@ -15,7 +15,7 @@ vla:
 
   three_d: true
   three_d_dim: 96
-  vla_id: qwen-siglip-224px-peract2
+  vla_id: qwen-0_5b-peract2
   action_dim: 16
   proprio_dim: 74
   hidden_size: 512

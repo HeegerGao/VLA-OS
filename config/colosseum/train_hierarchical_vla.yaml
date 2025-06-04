@@ -6,9 +6,12 @@ resume_step: null
 resume_epoch: null
 
 vla:
-  paradigm: integrated
-  load_from_checkpoint: false
-  checkpoint: null
+  paradigm: hierarchical
+
+  high_level_checkpoint: null
+
+  load_from_checkpoint: true
+  low_level_checkpoint: null
 
   # planning_heads: ["language_planning"]
   # planning_heads: ["visual_planning"]
@@ -17,10 +20,10 @@ vla:
   # planning_heads: ["language_planning", "image_foresight_planning"]
   # planning_heads: ["visual_planning", "image_foresight_planning"]
   planning_heads: ["language_planning", "visual_planning", "image_foresight_planning"]
-  planning_mode: implicit
-  # planning_mode: explicit
+  planning_mode: implicit # must!
 
-  three_d: false
+  three_d: true
+  three_d_dim: 96
 
   language_planning_head:
     hidden_size: 512
@@ -110,13 +113,14 @@ vla:
       apply_spatial_patchify: false
       debug_bsc: false
 
-  vla_id: qwen-0_5b-deformable
-  action_dim: 7
-  proprio_dim: 8
+  vla_id: qwen-0_5b-colosseum
+  action_dim: 8
+  proprio_dim: 37
   hidden_size: 512
   num_heads: 8
   dropout: 0.1
   gated: false
+  fps_subsampling_factor: 5
   action_loss_type: l1
 
   vlm:
@@ -128,25 +132,26 @@ vla:
     default_image_size: 224
 
 data:
-  root_dir: dataset/deformable
-  data_mix: deformable
-  shuffle_buffer_size: 100_000
+  root_dir: dataset/colosseum
+  data_mix: colosseum
+  shuffle_buffer_size: 12_000
   image_aug: true
   future_action_window_size: 7
   goal_image_step: 32  # goal image step
   image_window_size: 2
   use_wrist_image: true
   use_proprio: true
-  load_depth: false
-  given_camera_views: null
-  
+  load_depth: true
+  given_camera_views: ["primary", "wrist", "left", "right"]
+
 training:
   stage: full-finetune
   epochs: 50
   max_steps: 150_000
-  global_batch_size: 48
-  per_device_batch_size: 6
-  learning_rate: 1e-4
+  global_batch_size: 16
+  per_device_batch_size: 2
+  # learning_rate: 1e-4
+  learning_rate: 5e-5
   weight_decay: 0.0
   max_grad_norm: 1.0
   lr_scheduler_type: constant

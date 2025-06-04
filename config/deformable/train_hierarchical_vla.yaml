@@ -6,21 +6,28 @@ resume_step: null
 resume_epoch: null
 
 vla:
-  paradigm: integrated
+  paradigm: hierarchical
+
+  high_level_checkpoint: null
+
   load_from_checkpoint: false
-  checkpoint: null
+  low_level_checkpoint: null
 
   # planning_heads: ["language_planning"]
   # planning_heads: ["visual_planning"]
-  # planning_heads: ["language_planning", "visual_planning"]
   # planning_heads: ["image_foresight_planning"]
+  # planning_heads: ["language_planning", "visual_planning"]
   # planning_heads: ["language_planning", "image_foresight_planning"]
   # planning_heads: ["visual_planning", "image_foresight_planning"]
   planning_heads: ["language_planning", "visual_planning", "image_foresight_planning"]
-  planning_mode: implicit
-  # planning_mode: explicit
+  planning_mode: implicit # must!
 
   three_d: false
+  image_size: 224
+  patch_size: 14
+  extra_vision_embedding_dim: 2176  # for dinosiglip
+  language_embedding_dim: 3584
+  image_sequence_len: 4 # 2*2
 
   language_planning_head:
     hidden_size: 512
@@ -136,10 +143,10 @@ data:
   goal_image_step: 32  # goal image step
   image_window_size: 2
   use_wrist_image: true
-  use_proprio: true
   load_depth: false
+  use_proprio: true
   given_camera_views: null
-  
+
 training:
   stage: full-finetune
   epochs: 50
@@ -156,5 +163,5 @@ training:
   training_algo: bc
   # training_algo: flow_matching
   skewed_timesteps: false
-  planning_loss_weight: 1.0
+  planning_loss_weight: 0.0
   action_loss_weight: 1.0

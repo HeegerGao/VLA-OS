@@ -143,7 +143,6 @@ data:
 
 training:
   stage: full-finetune
-  # stage: freeze
   epochs: 50
   max_steps: 150_000
   global_batch_size: 48
