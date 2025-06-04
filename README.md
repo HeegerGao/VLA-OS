@@ -105,7 +105,7 @@ Note if you want to train the Hierarchical VLA, you should first train a Integra
 
 ## Training on Your Own Dataset
 
-
+Please refer to this [repo](https://github.com/Panda-Shawn/VLA-OS-Language-Planning-Labeling) for more instructions.
 
 ## Citation
 
