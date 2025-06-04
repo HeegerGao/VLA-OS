@@ -1,0 +1,43 @@
+seed: 42
+run_root_dir: runs
+wandb_project: qwen-vlm
+wandb_entity: null
+
+model:
+  model_id: qwen25-dinosiglip-224px+0_5b
+  # model_id: qwen25-dinosiglip-224px+1_5b
+  # model_id: qwen25-dinosiglip-224px+3b
+  # model_id: qwen25-dinosiglip-224px+7b
+  pretrained_checkpoint: null
+  llm_backbone_id: qwen25-0_5b
+  # llm_backbone_id: qwen25-1_5b
+  # llm_backbone_id: qwen25-3b
+  # llm_backbone_id: qwen25-7b
+  inference_mode: false
+  vision_backbone_id: dinosiglip-vit-so-224px
+  image_resize_strategy: resize-naive
+  default_image_size: 224
+  image_sequence_len: 1
+
+training:
+  stage: finetune
+  epochs: 2
+  max_steps: null
+  global_batch_size: 32
+  per_device_batch_size: 4
+  learning_rate: 2e-5
+  weight_decay: 0.1
+  max_grad_norm: 1.0
+  lr_scheduler_type: linear-warmup+cosine-decay
+  warmup_ratio: 0.03
+  enable_gradient_checkpointing: true
+  enable_mixed_precision_training: true
+  reduce_in_full_precision: false
+  sharding_strategy: full-shard
+
+dataset:
+  dataset_id: llava-v15
+  dataset_root_dir: dataset/
+  finetune_stage_components: 
+    - llava-v1.5-instruct/llava_v1_5_mix665k.json
+    - llava-v1.5-instruct/  

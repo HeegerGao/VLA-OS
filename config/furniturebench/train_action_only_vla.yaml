@@ -1,0 +1,66 @@
+seed: 42
+hf_token: .hf_token
+run_root_dir: runs
+wandb_project: vla
+resume_step: null
+resume_epoch: null
+
+vla:
+  paradigm: action-only
+  load_from_checkpoint: false
+  checkpoint: null
+
+  planning_heads: []
+  planning_mode: implicit
+
+  three_d: false
+
+  vla_id: qwen-0_5b-furniturebench
+  action_dim: 8
+  proprio_dim: 37
+  hidden_size: 512
+  num_heads: 8
+  dropout: 0.1
+  gated: false
+  action_loss_type: l1
+
+  vlm:
+    model_id: qwen25-dinosiglip-224px+0_5b
+    pretrained_checkpoint: runs/qwen25-dinosiglip-224px+0_5b+stage-finetune+x42/checkpoints/latest-checkpoint.pt
+    llm_backbone_id: qwen25-0_5b
+    vision_backbone_id: dinosiglip-vit-so-224px
+    image_resize_strategy: resize-naive
+    default_image_size: 224
+
+data:
+  root_dir: dataset/furniturebench
+  data_mix: furniturebench
+  shuffle_buffer_size: 16_000
+  image_aug: true
+  future_action_window_size: 32
+  goal_image_step: 64  # goal image step
+  image_window_size: 2
+  load_depth: false
+  use_wrist_image: true
+  use_proprio: true
+  given_camera_views: ["front", "rear", "wrist"]
+
+training:
+  stage: full-finetune
+  # stage: freeze
+  epochs: 50
+  max_steps: 150_000
+  global_batch_size: 24
+  per_device_batch_size: 3
+  learning_rate: 1e-4
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  lr_scheduler_type: constant
+  warmup_ratio: 0.03
+  sharding_strategy: full-shard
+  save_step: 3000
+  training_algo: bc
+  # training_algo: flow_matching
+  skewed_timesteps: false
+  planning_loss_weight: 0.0
+  action_loss_weight: 1.0

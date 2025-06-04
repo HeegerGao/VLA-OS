@@ -1,0 +1,160 @@
+seed: 42
+hf_token: .hf_token
+run_root_dir: runs
+wandb_project: vla
+resume_step: null
+resume_epoch: null
+
+vla:
+  paradigm: integrated
+  load_from_checkpoint: false
+  checkpoint: null
+
+  # planning_heads: ["language_planning"]
+  # planning_heads: ["visual_planning"]
+  # planning_heads: ["language_planning", "visual_planning"]
+  # planning_heads: ["image_foresight_planning"]
+  # planning_heads: ["language_planning", "image_foresight_planning"]
+  # planning_heads: ["visual_planning", "image_foresight_planning"]
+  planning_heads: ["language_planning", "visual_planning", "image_foresight_planning"]
+  planning_mode: implicit
+  # planning_mode: explicit
+
+  three_d: false
+
+  language_planning_head:
+    hidden_size: 512
+    num_heads: 8
+
+  visual_planning_head:
+    visual_planning_vocab_size: 1024
+    hidden_size: 512
+    num_heads: 8
+
+  image_foresight_planning_head:
+    generation_head_cfg:
+      text_channels: 1024
+      text_maxlen: 1650
+      embed_dim: 1024
+      depth: 24
+      num_heads: 8
+      mlp_ratio: 2.0
+      drop_rate: 0.0
+      drop_path_rate: 0.1
+      norm_eps: 1.0e-06
+      rms_norm: false
+      shared_aln: true
+      head_aln: true
+      cond_drop_rate: 0.1
+      rand_uncond: false
+      cross_attn_layer_scale: -1.0
+      nm0: false
+      tau: 1.0
+      cos_attn: true
+      swiglu: false
+      raw_scale_schedule: null
+      head_depth: 1
+      top_p: 0.0
+      top_k: 0.0
+      customized_flash_attn: true
+      fused_mlp: false
+      fused_norm: true
+      block_chunks: 3
+      checkpointing: full-block
+      pad_to_multiplier: 128
+      use_flex_attn: true
+      batch_size: 2
+      add_lvl_embeding_only_first_block: 1
+      use_bit_label: 1
+      rope2d_each_sa_layer: 1
+      rope2d_normalized_by_hw: 2
+      pn: 0.06M
+      train_h_div_w_list:
+      - 1.0
+      video_frames: 1
+      always_training_scales: 100
+      apply_spatial_patchify: false
+      inference_mode: false
+      scale_schedule:
+      - - 1
+        - 1
+        - 1
+      - - 1
+        - 2
+        - 2
+      - - 1
+        - 4
+        - 4
+      - - 1
+        - 6
+        - 6
+      - - 1
+        - 8
+        - 8
+      - - 1
+        - 12
+        - 12
+      - - 1
+        - 16
+        - 16
+      d_vlm: 128 # NOTE: this is the dimension of the v of the last layer of the VLM model
+      return_k_and_v: true # when implicit, false; when explicit, true
+    vae_cfg:
+      vae_type: 32
+      apply_spatial_patchify: false
+      vae_path: infinity_vae_d32reg.pth
+    bsc_cfg:
+      noise_apply_layers: 13
+      noise_apply_requant: true
+      noise_apply_strength: 0.3
+      apply_spatial_patchify: false
+      debug_bsc: false
+
+  vla_id: qwen-0_5b-libero-90
+  action_dim: 7
+  proprio_dim: 9
+  hidden_size: 512
+  num_heads: 8
+  dropout: 0.1
+  gated: false
+  action_loss_type: l1
+
+  vlm:
+    model_id: qwen25-dinosiglip-224px+0_5b
+    pretrained_checkpoint: runs/qwen25-dinosiglip-224px+0_5b+stage-finetune+x42/checkpoints/latest-checkpoint.pt
+    llm_backbone_id: qwen25-0_5b
+    vision_backbone_id: dinosiglip-vit-so-224px
+    image_resize_strategy: resize-naive
+    default_image_size: 224
+
+data:
+  root_dir: dataset/libero
+  data_mix: libero_90
+  shuffle_buffer_size: 256_000
+  image_aug: true
+  future_action_window_size: 7
+  goal_image_step: 32  # goal image step
+  image_window_size: 2
+  load_depth: false
+  use_wrist_image: true
+  use_proprio: true
+  given_camera_views: null
+
+training:
+  stage: full-finetune
+  epochs: 50
+  max_steps: 150_000
+  global_batch_size: 48
+  per_device_batch_size: 6
+  learning_rate: 1e-4
+  weight_decay: 0.0
+  max_grad_norm: 1.0
+  lr_scheduler_type: constant
+  warmup_ratio: 0.03
+  sharding_strategy: full-shard
+  save_step: 10000
+  training_algo: bc
+  # training_algo: flow_matching
+  skewed_timesteps: false
+  planning_loss_weight: 1.0
+  action_loss_weight: 1.0

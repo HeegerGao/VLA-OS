@@ -21,7 +21,7 @@ VLA-OS is a unified framework for planning representations and paradigms researc
 This repo is an official PyTorch implementation of VLA-OS, containing:
 
 - 🛠️VLA-OS model [implementation]().
-- 🤗[Planning Dataset]() of VLA-OS on [LIBERO](https://libero-project.github.io/intro.html), [The Colosseum](https://robot-colosseum.github.io/), [FurnitureBench](https://clvrai.github.io/furniture-bench/), [DexArt](https://www.chenbao.tech/dexart/), [PerAct2](https://bimanual.github.io/), and Real-World Deformable Object Manipulation tasks.
+- 🤗[Dataset](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset) of VLA-OS on [LIBERO](https://libero-project.github.io/intro.html), [The Colosseum](https://robot-colosseum.github.io/), [FurnitureBench](https://clvrai.github.io/furniture-bench/), [DexArt](https://www.chenbao.tech/dexart/), [PerAct2](https://bimanual.github.io/), and Real-World Deformable Object Manipulation tasks.
 - 🤗[checkpoint]() of VLA-OS on LIBERO-LONG.
 - 📈Training [scripts]() (with DeepSpeed Accelerator).
 - 🤖Data transformation [scripts]() for your own dataset.
