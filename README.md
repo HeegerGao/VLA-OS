@@ -34,7 +34,7 @@ The following guides include the [installation](#installation), [VLM Pretraining
 
 ## Installation
 
-This installation is for NVIDIA A100 80G with cuda 12.6. We haven't test other cuda versions.
+This installation is for NVIDIA A100 80G with cuda 12.6.
 
 ```bash
 # Clone this repo
