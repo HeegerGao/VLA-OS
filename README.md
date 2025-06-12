@@ -2,7 +2,7 @@
 
 ### 📝[Paper](https://github.com/HeegerGao/VLA-OS) | 🌍[Project Page](https://github.com/HeegerGao/VLA-OS) | 🤗[Model](https://huggingface.co/Linslab/VLA-OS) | 🛢️[Data](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset) | 🏞️[Poster](https://github.com/HeegerGao/VLA-OS)
 
-![](./imgs/poster.png)
+![](./imgs/overview.png)
 
 VLA-OS is a unified framework for planning representations and paradigms research in vision-language-action (VLA) models. Specifically, VLA-OS offers the following features:
 
