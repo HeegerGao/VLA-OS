@@ -118,7 +118,13 @@ Please refer to this [repo](https://github.com/Panda-Shawn/VLA-OS-Language-Plann
 If you find our work helpful, please cite us:
 
 ```bibtex
-TODO
+@article{gao2025vlaos,
+  title   = {VLA-OS: Structuring and Dissecting Planning Representations and Paradigms in Vision-Language-Action Models},
+  author  = {Gao, Chongkai and Liu, Zixuan and Chi, Zhenghao and Huang, Junshan and Fei, Xin and Hou, Yiwen and Zhang, Yuxuan and Lin, Yudi and Fang, Zhirui and Jiang, Zeyu and Shao, Lin},
+  journal = {arXiv preprint arXiv:2506.17561},
+  year    = {2025},
+  url     = {https://arxiv.org/abs/2506.17561}
+}
 ```
 
 Thank you!
