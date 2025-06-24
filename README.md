@@ -30,7 +30,12 @@ This repo is an official PyTorch implementation of VLA-OS, containing:
 The following guides include the [installation](#installation), [VLM Pretraining](#vlm-pretraining), [VLA Training](#vla-training), and [Training on your own dataset](#training-on-your-own-dataset). 
 
 ## 📰 News
-- [2025/06/05] 🔥 Training Code released!
+- [2025/06/24] 🔥 Training Code released!
+
+## TODO
+[] Add training code for continual learning
+[] Add evaluation code
+
 
 ## Installation
 
@@ -69,7 +74,8 @@ pip install -r requirements.txt
 
 1. Download the llava-v1.5-instruct Dataset
 
-You can eiter download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets), or download it from our organized [HuggingFace version](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset/tree/main/llava-v1.5-instruct). Then move the unzipped dataset folder:
+You can download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets). Then move the unzipped dataset folder:
+<!-- You can eiter download it according to the Prismatic-VLMs [instruction](https://github.com/TRI-ML/prismatic-vlms/tree/main?tab=readme-ov-file#pretraining-datasets), or download it from our organized [HuggingFace version](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset/tree/main/llava-v1.5-instruct). Then move the unzipped dataset folder: -->
 
 ```bash
 cd VLA-OS
