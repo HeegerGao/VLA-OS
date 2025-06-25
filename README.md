@@ -10,7 +10,7 @@ VLA-OS is a unified framework for planning representations and paradigms researc
   VLA-OS integrates multiple cutting-edge VLA design elements, including support for [multi-view historical inputs](https://robovlms.github.io/), [action chunking](https://tonyzhaozh.github.io/aloha/), a separate [action head](https://www.physicalintelligence.company/blog/pi0), [block-wise causal attention for extracting visual-language model (VLM) features](https://www.physicalintelligence.company/blog/pi0), and support for both [L1 loss](https://openvla-oft.github.io/) and [flow-matching loss](https://www.physicalintelligence.company/blog/pi0) within a single network architecture.
 
 - 🔗 **Modular, Scalable VLM Backbone**  
-  VLA-OS is agnostic to the choice of large-language or visual-language models: any Hugging Face LLM/VLM can be employed. [Our paper]() presents model-scalability experiments on the same LLM model architecture ([Qwen2.5](https://github.com/QwenLM/Qwen2.5-VL)) with only different number of parameters.
+  VLA-OS is agnostic to the choice of large-language or visual-language models: any Hugging Face LLM/VLM can be employed. [Our paper](https://arxiv.org/abs/2506.17561) presents model-scalability experiments on the same LLM model architecture ([Qwen2.5](https://github.com/QwenLM/Qwen2.5-VL)) with only different number of parameters.
 
 - 🛠️ **Composable Planning Heads for Different Planning Representations**  
   A suite of composable planning heads is provided for different task planning representations: language reasoning, visual reasoning, and image foresight reasoning. Each of them can be seamlessly attached to the VLM backbone.
