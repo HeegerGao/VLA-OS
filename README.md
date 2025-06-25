@@ -1,6 +1,6 @@
 # VLA-OS: Structuring and Dissecting Planning Representations and Paradigms in Vision-Language-Action Models
 
-### 📝[Paper](https://github.com/HeegerGao/VLA-OS) | 🌍[Project Page](https://github.com/HeegerGao/VLA-OS) | 🤗[Model](https://huggingface.co/Linslab/VLA-OS) | 🛢️[Data](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset) | 🏞️[Poster](https://github.com/HeegerGao/VLA-OS)
+### 📝[Paper](https://arxiv.org/abs/2506.17561) | 🌍[Project Page](https://nus-lins-lab.github.io/vlaos/) | 🤗[Model](https://huggingface.co/Linslab/VLA-OS) | 🛢️[Data](https://huggingface.co/datasets/Linslab/VLA-OS-Dataset) 
 
 ![](./imgs/overview.png)
 
